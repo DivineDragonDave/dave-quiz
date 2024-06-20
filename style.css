@@ -5,7 +5,7 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  background-color: #ffe6e6;
+  background-image: url(/bilder/midsommar.jpg);
 }
 
 .quiz-container {
@@ -15,7 +15,9 @@ body {
   padding: 80px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #e1afd1;
+  background-color: rgba(244, 244, 244, 0.7);
+  display: flex;
+  justify-content: center;
 }
 
 .question-counter {
@@ -23,6 +25,7 @@ body {
   margin-bottom: 20px;
   font-size: 18px;
   font-weight: bold;
+  color: rgb(99, 93, 93);
 }
 
 .question {
@@ -30,8 +33,9 @@ body {
   border-radius: 15px;
   margin-bottom: 20px;
   font-size: 20px;
-  background-color: #ad88c6;
+  background-color: #3995db;
   padding: 25px;
+  color: white;
 }
 
 .answers {
@@ -44,14 +48,15 @@ body {
   margin-bottom: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #7469b6;
+  background-color: #25618f;
   cursor: pointer;
   font-size: 18px;
   transition: background 0.3s;
+  color: white;
 }
 
 .answer:hover {
-  background: #ad88c6;
+  background: #183e5c;
 }
 
 .next-btn {
@@ -59,7 +64,7 @@ body {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #7469b6;
+  background-color: #25618f;
   color: white;
   cursor: pointer;
   margin-left: 70%;
@@ -67,13 +72,29 @@ body {
 }
 
 .next-btn:hover {
-  background-color: #ad88c6;
+  background-color: #183e5c;
 }
 
 .answer.correct {
-  background-color: #4caf50;
+  background-color: #178d1d;
 }
 
 .answer.incorrect {
-  background-color: #f44336;
+  background-color: #ad2f26;
+}
+
+#start-quiz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 80px;
+  border-radius: 100%;
+  background-color: #25618f;
+  color: white;
+  cursor: pointer;
+}
+
+#start-quiz:hover {
+  background-color: #183e5c;
 }

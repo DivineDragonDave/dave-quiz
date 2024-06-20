@@ -1,14 +1,33 @@
 import { questions } from "./questions.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  const startButton = document.getElementById("start-quiz");
+  const quizContent = document.getElementById("quiz-content");
   const questionElement = document.getElementById("question");
   const questionCounterElement = document.getElementById("question-counter");
   const infoElement = document.getElementById("info");
   const nextButton = document.getElementById("next-question");
   const answersButtons = document.querySelectorAll(".answer");
+  const resultElement = document.getElementById("result");
 
   let correctAnswersCount = 0;
   let currentQuestionIndex = 0;
+  let startTime;
+  let totalTime = 0;
+  let timerPaused = false;
+
+  function startTimer() {
+    startTime = new Date();
+    timerPaused = false;
+  }
+
+  function stopTimer() {
+    if (!timerPaused) {
+      const now = new Date();
+      totalTime += Math.floor((now - startTime) / 1000);
+      timerPaused = true;
+    }
+  }
 
   function showQuestion(question) {
     questionElement.textContent = question.question;
@@ -30,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function handleAnswer(selectedOption, correctOption) {
+    stopTimer();
     const isCorrect = selectedOption === correctOption;
     if (isCorrect) {
       correctAnswersCount++;
@@ -57,14 +77,19 @@ document.addEventListener("DOMContentLoaded", () => {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
       showQuestion(questions[currentQuestionIndex]);
+      startTimer();
     } else {
-      const resultText = `Du hade ${correctAnswersCount} rätt svar av ${questions.length} möjliga.`;
-      infoElement.innerHTML = resultText;
-      document.querySelector(".question").style.display = "none";
-      document.querySelector(".answers").style.display = "none";
-      nextButton.style.display = "none";
+      const resultText = `Du hade ${correctAnswersCount} rätt svar av ${questions.length} möjliga. Tid: ${totalTime} sekunder.`;
+      resultElement.innerHTML = resultText;
+      resultElement.style.display = "block";
+      quizContent.style.display = "none";
     }
   });
 
-  showQuestion(questions[currentQuestionIndex]);
+  startButton.addEventListener("click", () => {
+    startButton.style.display = "none";
+    quizContent.style.display = "block";
+    showQuestion(questions[currentQuestionIndex]);
+    startTimer();
+  });
 });

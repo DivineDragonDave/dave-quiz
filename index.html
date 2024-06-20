@@ -8,15 +8,19 @@
   </head>
   <body>
     <div class="quiz-container">
-      <div id="question-counter" class="question-counter">1/10</div>
-      <div id="question" class="question">Fråga kommer här...</div>
-      <div class="answers">
-        <button class="answer">Alternativ 1</button>
-        <button class="answer">Alternativ 2</button>
-        <button class="answer">Alternativ 3</button>
+      <button id="start-quiz" class="start-btn">Start</button>
+      <div id="quiz-content" class="quiz-content" style="display: none">
+        <div id="question-counter" class="question-counter">1/10</div>
+        <div id="question" class="question">Fråga kommer här...</div>
+        <div class="answers">
+          <button class="answer">Alternativ 1</button>
+          <button class="answer">Alternativ 2</button>
+          <button class="answer">Alternativ 3</button>
+        </div>
+        <div id="info" class="info">info</div>
+        <button id="next-question" class="next-btn">Nästa</button>
       </div>
-      <div id="info" class="info">info</div>
-      <button id="next-question" class="next-btn">Nästa</button>
+      <div id="result" class="result" style="display: none"></div>
     </div>
     <script type="module" src="questions.js"></script>
     <script type="module" src="index.js"></script>
